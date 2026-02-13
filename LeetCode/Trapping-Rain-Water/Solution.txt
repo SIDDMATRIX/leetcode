@@ -1,0 +1,29 @@
+1class Solution {
+2    public int trap(int[] height) {
+3        int n = height.length;
+4        int left = 0, right = n - 1;
+5        int leftMax = 0, rightMax = 0;
+6        int water = 0;
+7
+8        while (left < right) {
+9            if (height[left] < height[right]) {
+10                if (height[left] >= leftMax) {
+11                    leftMax = height[left];
+12                } else {
+13                    water += leftMax - height[left];
+14                }
+15                left++;
+16            } else {
+17                if (height[right] >= rightMax) {
+18                    rightMax = height[right];
+19                } else {
+20                    water += rightMax - height[right];
+21                }
+22                right--;
+23            }
+24        }
+25
+26        return water;
+27    }
+28}
+29
